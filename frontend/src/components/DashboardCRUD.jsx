@@ -883,13 +883,6 @@ const DashboardCRUD = () => {
 
         {/* Modal CRUD */}
         {(() => {
-          const ordenEstadoOptions = [
-            { value: 'pendiente', label: 'Pendiente' },
-            { value: 'en_proceso', label: 'En Proceso' },
-            { value: 'finalizado', label: 'Finalizado' },
-            { value: 'cancelado', label: 'Cancelado' },
-            { value: 'suspendido', label: 'Suspendido' }
-          ];
 
           const modalFields = (
             modulo === 'clientes' ? clientesFields :
