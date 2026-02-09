@@ -106,6 +106,6 @@ const PORT = process.env.PORT || 3001;
   }
   app.listen(PORT, () => {
     console.log(`Servidor ERP corriendo en puerto ${PORT}`);
-    console.log(`Frontend esperado en: ${FRONTEND_URL}`);
+    console.log(`Frontend esperado en: ${ALLOWED_ORIGINS.join(', ')}`);
   });
 })();
