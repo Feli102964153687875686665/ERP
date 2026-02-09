@@ -76,14 +76,14 @@ app.get('/health', async (req, res) => {
 app.use((err, req, res, next) => {
   if (err && err.type === 'entity.parse.failed') {
     console.error('Bad JSON received:', err.message);
-    if (process.env.NODE_ENV !== 'production' && req && req.rawBody) {
+    if ((process.env.NODE_ENV !== 'production' || process.env.DEBUG_RAW_BODY === 'true') && req && req.rawBody) {
       console.error('Raw body:', req.rawBody);
     }
     return res.status(400).json({ error: 'Bad JSON in request body' });
   }
   if (err instanceof SyntaxError && err.status === 400 && 'body' in err) {
     console.error('SyntaxError parsing JSON:', err.message);
-    if (process.env.NODE_ENV !== 'production' && req && req.rawBody) {
+    if ((process.env.NODE_ENV !== 'production' || process.env.DEBUG_RAW_BODY === 'true') && req && req.rawBody) {
       console.error('Raw body:', req.rawBody);
     }
     return res.status(400).json({ error: 'Malformed JSON' });
