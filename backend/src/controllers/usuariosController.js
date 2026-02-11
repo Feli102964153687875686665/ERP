@@ -17,9 +17,6 @@ const login = async (req, res) => {
     
     console.log('🔍 Buscando usuario en base de datos...');
     
-    // Simular delay de 2 segundos
-    await new Promise(resolve => setTimeout(resolve, 2000));
-    
     // Buscar usuario por email (permitir login independientemente de `activo`)
     const result = await pool.query(
       'SELECT * FROM usuarios WHERE email = $1',
