@@ -1,0 +1,21 @@
+# Render manifest to deploy backend service from this repository
+# Adjust secret values in Render dashboard (do NOT store secrets in repo)
+
+services:
+  - type: web_service
+    name: erp-backend
+    env: node
+    plan: free
+    branch: main
+    root: .
+    buildCommand: "npm install"
+    startCommand: "npm start"
+    autoDeploy: true
+    envVars:
+      - key: JWT_SECRET
+        sync: false
+      - key: JWT_EXPIRES_IN
+        value: "7d"
+        sync: false
+      - key: DATABASE_URL
+        sync: false
